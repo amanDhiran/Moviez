@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
 import { useSelector } from 'react-redux'
+import Img from "./lazyLoadImage/Img"
+import ContentWrapper from './contentWrappper/ContentWrapper'
 
 function HeroBanner() {
   const [background, setBackground] = useState("")
@@ -25,10 +27,16 @@ function HeroBanner() {
 
   return (
     <div>
+      {!loading && <div>
+        <Img src={background}/>
+      </div>}
+
       <div>
         
       </div>
-      <div>
+      
+      <ContentWrapper>
+      
         <div>
           <span>Welcome</span>
           <span>
@@ -46,7 +54,8 @@ function HeroBanner() {
             <button>Search</button>
           </div>
         </div>
-      </div>
+      
+      </ContentWrapper>
     </div>
   )
 }
