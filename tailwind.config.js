@@ -28,6 +28,9 @@ export default {
       },
       animation: {
         mobileMenu: 'mobileMenu 0.3s ease forwards',
+      },
+      boxShadow: {
+        socialIcon: '0 0 0.625em #da2f68',
       }
     },
   },

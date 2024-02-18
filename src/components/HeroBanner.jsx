@@ -52,7 +52,7 @@ function HeroBanner() {
             <input 
             className=' w-input-width-small-screen h-12 outline-none text-black rounded-l-[30px] px-4 text-sm md:w-input-width-large-screen md:h-14 md:text-xl md:px-7'
             type="text"
-            placeholder='Search for a movie or TV show...'
+            placeholder='Search for a movie or tv show...'
             onKeyUp={searchQueryHandler}
             onChange={(e) => setQuery(e.target.value)}
             
