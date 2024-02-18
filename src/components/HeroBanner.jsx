@@ -43,7 +43,7 @@ function HeroBanner() {
       <ContentWrapper>
       
         <div className='flex flex-col items-center text-[white] text-center relative max-w-3xl my-0 mx-auto '>
-          <span className=' text-5xl font-bold mb-3 md:mb-0 md:text[90px]'>Welcome</span>
+          <span className=' text-5xl font-bold mb-3 md:mb-0 md:text-[90px]'>Welcome.</span>
           <span className=' text-lg font-medium mb-10 md:text-2xl'>
             Millions of movies, TV shows and people to discover.
             Explore now.
