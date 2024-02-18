@@ -19,6 +19,15 @@ export default {
       },
       backgroundImage: {
         gradient: "linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%)",
+      },
+      keyframes: {
+        mobileMenu: {
+          '0%': { transform: 'translateY(-130%)' },
+          '100%': { transform: 'translateY(0)' },
+        }
+      },
+      animation: {
+        mobileMenu: 'mobileMenu 0.3s ease forwards',
       }
     },
   },
