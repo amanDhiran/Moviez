@@ -41,7 +41,7 @@ const Footer = () => {
             <FaLinkedin />,
           ].map((item, i) => {
             return (
-              <span className="w-[50px] h-[50px] rounded-full bg-black flex items-center justify-center cursor-pointer transition-all ease-in-out duration-[0.3s] hover:text-pink hover:shadow-socialIcon ">
+              <span key={i} className="w-[50px] h-[50px] rounded-full bg-black flex items-center justify-center cursor-pointer transition-all ease-in-out duration-[0.3s] hover:text-pink hover:shadow-socialIcon ">
                 {item}
               </span>
             );

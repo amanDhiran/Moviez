@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ContentWrapper from './contentWrappper/ContentWrapper'
 import SwitchTabs from './SwitchTabs'
 import useFetch from '../hooks/useFetch'
+import Carousel from './carousel/Carousel'
 
 function Trending() {
 
@@ -19,6 +20,7 @@ function Trending() {
         <span className='text-[24px] text-white font-normal'>Trending</span>
         <SwitchTabs onTabChange={onTabChange} data={["Day", "Week"]} />
       </ContentWrapper>
+      <Carousel data={data?.results} loading={loading}/>
     </div>
   )
 }

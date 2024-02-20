@@ -15,7 +15,9 @@ export default {
       },
       width: {
         "input-width-small-screen": 'calc(100% - 100px)',
-        "input-width-large-screen": 'calc(100% - 150px)'
+        "input-width-large-screen": 'calc(100% - 150px)',
+        "carousel-item-md": 'calc(25% - 15px)',
+        "carousel-item-lg": 'calc(20% - 16px)'
       },
       backgroundImage: {
         gradient: "linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%)",
