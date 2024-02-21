@@ -19,7 +19,14 @@ function Carousel({data, loading}) {
   const navigate = useNavigate();
 
   const navigation = (dir) => {
+    const container = carouselContainer.current;
 
+        const scrollAmount = dir === "left" ? container.scrollLeft - (container.offsetWidth + 20) : container.scrollLeft + (container.offsetWidth + 20);
+
+        container.scrollTo({
+            left: scrollAmount,
+            behavior: "smooth",
+        });
   }
 
   const skItem = () => {
@@ -38,28 +45,30 @@ function Carousel({data, loading}) {
     <div className="mb-[50px]">
       <ContentWrapper className={"relative"}>
         <BsFillArrowLeftCircleFill 
-          className="text-[30px] text-black absolute top-[44%] -translate-y-[50%] cursor-pointer z-[1] hidden md:block left-[30px]"
-          onClick={() => Navigation("left")}
+          className="text-[30px] text-black absolute top-[44%] -translate-y-[50%] cursor-pointer z-[1] hidden md:block left-[30px] opacity-80 hover:opacity-100"
+          onClick={() => navigation("left")}
         />
         <BsFillArrowRightCircleFill
-          className="text-[30px] text-black absolute top-[44%] -translate-y-[50%] cursor-pointer z-[1] hidden md:block right-[30px]" 
-          onClick={() => Navigation("right")}
+          className="text-[30px] text-black absolute top-[44%] -translate-y-[50%] cursor-pointer z-[1] hidden md:block right-[30px] opacity-80 hover:opacity-100" 
+          onClick={() => navigation("right")}
         />
         {!loading ? (
-          <div className="flex gap-[10px] overflow-y-hidden -mr-5 -ml-5 px-[20px] md:gap-[20px] md:overflow-hidden md:m-0 md:p-0">
+          <div className="flex gap-[10px] overflow-y-hidden -mr-5 -ml-5 px-[20px] md:gap-[20px]  md:m-0 md:p-0" ref={carouselContainer}>
             {data?.map((item) => {
               const posterUrl = item.poster_path ? url.poster + item.poster_path : PosterFallback
               return (
                 <div 
                   key={item.id}
-                  className="w-[125px] cursor-pointer md:w-carousel-item-md lg:w-carousel-item-lg flex-shrink-0">
+                  className="w-[125px] cursor-pointer md:w-carousel-item-md lg:w-carousel-item-lg flex-shrink-0"
+                  onClick={() => navigate(`/${item.media_type}/${item.id}`)}
+                  >
                     <div className="relative w-full aspect-[1/1.5] bg-cover bg-center mb-[30px] flex items-end justify-between ">
                       <Img className={"w-full h-full object-cover object-center"} src={posterUrl} />
                       <CircleRating className={"w-[40px] h-[40px] relative top-[20px] left-[12px] bg-white flex-shrink-0 md:w-[40px] md:h-[40px]"} rating={item?.vote_average.toFixed(1)}/>
                       <Genres className = {" m-2 hidden relative md:flex md:flex-wrap md:justify-end"} data={item.genre_ids.slice(0,2)} />
                     </div>
                     <div className="text-white flex flex-col">
-                      <span className="text-[16px] mb-[10px] leading-[24px] md:text-[20px]">
+                      <span className="text-[16px] mb-[10px] leading-[24px] md:text-[20px] text-ellipsis line-clamp-1">
                         {item.title || item.name}
                       </span>
                       <span className="text-[14px] opacity-[0.5]">
