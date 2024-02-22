@@ -54,7 +54,7 @@ function DetailsBanner() {
                                     <Genres className={"mb-[25px] flex-wrap flex-row"} data={_genres} />
 
                                     <div className="row">
-                                        <CircleRating className={"max-w-[70px] bg-black2 rounded-[50%]"} rating={data?.vote_average.toFixed(1)}/>
+                                        <CircleRating textColor={"white"} className={"max-w-[70px] bg-black2 rounded-[50%]"} rating={data?.vote_average.toFixed(1)}/>
                                     </div>
 
                             </div>

@@ -64,7 +64,7 @@ function Carousel({data, loading}) {
                   >
                     <div className="poster-block relative w-full aspect-[1/1.5] bg-cover bg-center mb-[30px] flex items-end justify-between ">
                       <Img className={"w-full h-full object-cover object-center"} src={posterUrl} />
-                      <CircleRating className={" rounded-[50%] p-[2px] w-[40px] h-[40px] relative top-[20px] left-[12px] bg-white flex-shrink-0 md:w-[40px] md:h-[40px]"} rating={item?.vote_average.toFixed(1)}/>
+                      <CircleRating textColor={"#04152d"} className={" rounded-[50%] p-[2px] w-[40px] h-[40px] relative top-[20px] left-[12px] bg-white flex-shrink-0 md:w-[40px] md:h-[40px]"} rating={item?.vote_average.toFixed(1)}/>
                       <Genres className = {" m-2 hidden relative md:flex md:flex-wrap md:justify-end"} data={item.genre_ids.slice(0,2)} />
                     </div>
                     <div className="text-white flex flex-col">
