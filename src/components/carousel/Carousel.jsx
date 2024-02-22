@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import "./carousel.css"
-import CircleRating from "../../circularRating/CircleRating";
+import CircleRating from "../circularRating/CircleRating";
 import ContentWrapper from "../contentWrappper/ContentWrapper";
 import Img from "../lazyLoadImage/Img";
 import PosterFallback from "../../assets/no-poster.png"
@@ -62,9 +62,9 @@ function Carousel({data, loading}) {
                   className="w-[125px] cursor-pointer md:w-carousel-item-md lg:w-carousel-item-lg flex-shrink-0"
                   onClick={() => navigate(`/${item.media_type}/${item.id}`)}
                   >
-                    <div className="relative w-full aspect-[1/1.5] bg-cover bg-center mb-[30px] flex items-end justify-between ">
+                    <div className="poster-block relative w-full aspect-[1/1.5] bg-cover bg-center mb-[30px] flex items-end justify-between ">
                       <Img className={"w-full h-full object-cover object-center"} src={posterUrl} />
-                      <CircleRating className={"w-[40px] h-[40px] relative top-[20px] left-[12px] bg-white flex-shrink-0 md:w-[40px] md:h-[40px]"} rating={item?.vote_average.toFixed(1)}/>
+                      <CircleRating className={" rounded-[50%] p-[2px] w-[40px] h-[40px] relative top-[20px] left-[12px] bg-white flex-shrink-0 md:w-[40px] md:h-[40px]"} rating={item?.vote_average.toFixed(1)}/>
                       <Genres className = {" m-2 hidden relative md:flex md:flex-wrap md:justify-end"} data={item.genre_ids.slice(0,2)} />
                     </div>
                     <div className="text-white flex flex-col">
