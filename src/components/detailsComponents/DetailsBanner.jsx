@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import ContentWrapper from "../contentWrappper/ContentWrapper";
@@ -9,8 +9,13 @@ import dayjs from "dayjs";
 import Genres from "../Genres";
 import CircleRating from "../circularRating/CircleRating";
 import { PiPlayCircleThin } from "react-icons/pi";
+import VideoPopup from "../VideoPopup";
 
-function DetailsBanner({video, crew}) {
+function DetailsBanner({ video, crew }) {
+  
+  const [show, setShow] = useState(false);
+    const [videoId, setVideoId] = useState(null);
+
   const { mediaType, id } = useParams();
   const { data, loading } = useFetch(`/${mediaType}/${id}`);
   const { url } = useSelector((state) => state.home);
@@ -18,7 +23,9 @@ function DetailsBanner({video, crew}) {
   const _genres = data?.genres?.map((g) => g.id);
 
   const director = crew?.filter((f) => f.job === "Director");
-  const writer = crew?.filter((f) => f.job === "Screenplay" || f.job === "Story" || f.job === "Writer");
+  const writer = crew?.filter(
+    (f) => f.job === "Screenplay" || f.job === "Story" || f.job === "Writer"
+  );
 
   const toHoursAndMinutes = (totalMinutes) => {
     const hours = Math.floor(totalMinutes / 60);
@@ -81,7 +88,13 @@ function DetailsBanner({video, crew}) {
                         }
                         rating={data?.vote_average.toFixed(1)}
                       />
-                      <div className="flex items-center gap-[10px] cursor-pointer hover:text-pink transition-colors ease-in-out duration-[0.7s]">
+                      <div
+                        className="flex items-center gap-[10px] cursor-pointer hover:text-pink transition-colors ease-in-out duration-[0.7s]"
+                        onClick={() => {
+                          setShow(true);
+                          setVideoId(video.key);
+                        }}
+                      >
                         <PiPlayCircleThin className="rounded-full md:text-[100px] text-[80px]" />
                         <span className="text-[20px] ">Watch Trailer</span>
                       </div>
@@ -128,7 +141,7 @@ function DetailsBanner({video, crew}) {
                     {director?.length > 0 && (
                       <div className="border-b border-[rgba(255,255,255,0.1)] py-[15px] flex">
                         <span className="mr-[10px] opacity-[1] leading-[24px] font-semibold">
-                          Director: {" "}
+                          Director:{" "}
                         </span>
                         <span className="mr-[10px] opacity-[0.5] leading-[24px]">
                           {director?.map((d, i) => (
@@ -143,7 +156,7 @@ function DetailsBanner({video, crew}) {
                     {writer?.length > 0 && (
                       <div className="border-b border-[rgba(255,255,255,0.1)] py-[15px] flex">
                         <span className="mr-[10px] opacity-[1] leading-[24px] font-semibold">
-                          Writer: {" "}
+                          Writer:{" "}
                         </span>
                         <span className="mr-[10px] opacity-[0.5] leading-[24px]">
                           {writer?.map((d, i) => (
@@ -158,7 +171,7 @@ function DetailsBanner({video, crew}) {
                     {data?.created_by?.length > 0 && (
                       <div className="border-b border-[rgba(255,255,255,0.1)] py-[15px] flex">
                         <span className="mr-[10px] opacity-[1] leading-[24px] font-semibold">
-                          Creator: {" "}
+                          Creator:{" "}
                         </span>
                         <span className="mr-[10px] opacity-[0.5] leading-[24px]">
                           {data?.created_by?.map((d, i) => (
@@ -172,6 +185,12 @@ function DetailsBanner({video, crew}) {
                     )}
                   </div>
                 </div>
+                <VideoPopup
+                  show={show}
+                  setShow={setShow}
+                  videoId={videoId}
+                  setVideoId={setVideoId}
+                />
               </ContentWrapper>
             </div>
           )}
