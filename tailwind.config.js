@@ -20,7 +20,7 @@ export default {
         "carousel-item-lg": 'calc(20% - 16px)'
       },
       backgroundImage: {
-        gradient: "linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%)",
+        gradient: "linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 100%, rgba(252,176,69,1) 100%)",
       },
       keyframes: {
         mobileMenu: {
