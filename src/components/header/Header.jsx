@@ -74,7 +74,7 @@ function Header() {
           ? "bg-black3"
           : show === "hide"
           ? "translate-y-[-60px]"
-          : "bg-[rgba(0, 0, 0, 0.25)] backdrop-blur-[3.5px]"
+          : "bg-[rgba(0,0,0,0.25)] backdrop-blur-[3.5px]"
       } ${
         mobileMenu ? " bg-black3" : ""
       } transition-all ease-in-out duration-[0.3s]`}
