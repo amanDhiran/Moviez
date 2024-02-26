@@ -13,7 +13,7 @@ import Img from "../lazyLoadImage/Img";
 import PosterFallback from "../../assets/no-poster.png"
 import Genres from "../Genres";
 
-function Carousel({data, loading}) {
+function Carousel({data, loading, endpoint, title}) {
   const carouselContainer = useRef()
   const {url} = useSelector((state) => state.home)
   const navigate = useNavigate();
@@ -44,6 +44,7 @@ function Carousel({data, loading}) {
   return (
     <div className="mb-[50px]">
       <ContentWrapper className={"relative"}>
+      {title && <div className="text-[24px] text-white mb-[20px] font-normal">{title}</div>}
         <BsFillArrowLeftCircleFill 
           className="text-[30px] text-black absolute top-[44%] -translate-y-[50%] cursor-pointer z-[1] hidden md:block left-[30px] opacity-80 hover:opacity-100"
           onClick={() => navigation("left")}
@@ -60,7 +61,7 @@ function Carousel({data, loading}) {
                 <div 
                   key={item.id}
                   className="w-[125px] cursor-pointer md:w-carousel-item-md lg:w-carousel-item-lg flex-shrink-0"
-                  onClick={() => navigate(`/${item.media_type}/${item.id}`)}
+                  onClick={() => navigate(`/${item.media_type || endpoint}/${item.id}`)}
                   >
                     <div className="poster-block relative w-full aspect-[1/1.5] bg-cover bg-center mb-[30px] flex items-end justify-between ">
                       <Img className={"w-full h-full object-cover object-center"} src={posterUrl} />

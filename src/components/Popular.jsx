@@ -20,7 +20,7 @@ function Popular() {
         <span className='text-[24px] text-white font-normal'>Popular</span>
         <SwitchTabs onTabChange={onTabChange} data={["Movies", "TV Shows"]} />
       </ContentWrapper>
-      <Carousel data={data?.results} loading={loading}/>
+      <Carousel data={data?.results} loading={loading} endpoint={endpoint}/>
     </div>
   )
 }
