@@ -44,19 +44,19 @@ function SearchResult() {
     fetchInitialData();
   }, [query]);
   return (
-    <div className="searchResultsPage">
+    <div className=" min-h-[700px] pt-[100px]">
       {loading && <p>loading</p>}
       {!loading && (
         <ContentWrapper>
           {data?.results?.length > 0 ? (
             <>
-              <div className="pageTitle">
+              <div className=" text-2xl leading-[34px] text-white mb-[25px]">
                 {`Search ${
                   data?.total_results > 1 ? "results" : "result"
                 } of '${query}'`}
               </div>
               <InfiniteScroll
-                className="content"
+                className="flex flex-wrap flex-row gap-[10px] mb-[50px] md:gap-5"
                 dataLength={data?.results?.length || []}
                 next={fetchNextPageData}
                 hasMore={pageNum <= data?.total_pages}
@@ -71,7 +71,7 @@ function SearchResult() {
               </InfiniteScroll>
             </>
           ) : (
-            <span className="resultNotFound">Sorry, Results not found!</span>
+            <span className="text-2xl text-black-light">Sorry, Results not found!</span>
           )}
         </ContentWrapper>
       )}
