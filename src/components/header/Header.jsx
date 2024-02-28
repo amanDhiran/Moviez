@@ -80,7 +80,7 @@ function Header() {
       } transition-all ease-in-out duration-[0.3s]`}
     >
       <ContentWrapper className="flex items-center justify-between">
-        <div className=" cursor-pointer z-[2]">
+        <div className=" cursor-pointer z-[2]" onClick={() => navigate("/")}>
           {/*logo */}
           <h2 className="items-center flex h-[50px] text-white ">LOGO</h2>
         </div>
