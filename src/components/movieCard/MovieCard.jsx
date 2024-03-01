@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import './movieCard.css'
 import Img from "../lazyLoadImage/Img";
 import dayjs from "dayjs";
+import PosterFallback from "../../assets/no-poster.png"
 
 
 function MovieCard({ data, fromSearch, mediaType }) {
@@ -23,7 +24,7 @@ function MovieCard({ data, fromSearch, mediaType }) {
         <Img className="w-full h-full object-cover object-center" src={posterUrl} />
         {!fromSearch && (
           <>
-            <CircleRating className={" rounded-[50%] p-[2px] w-[40px] h-[40px] relative top-[20px] left-[12px] bg-white flex-shrink-0 md:w-[50px] md:h-[50px]"} rating={data.vote_average.toFixed(1)} />
+            <CircleRating textColor={"#04152d"} className={" rounded-[50%] p-[2px] w-[40px] h-[40px] relative top-[20px] left-[12px] bg-white flex-shrink-0 md:w-[50px] md:h-[50px]"} rating={data.vote_average.toFixed(1)} />
             <Genres className = {" m-2 hidden relative md:flex md:flex-wrap md:justify-end"} data={data.genre_ids.slice(0, 2)} />
           </>
         )}

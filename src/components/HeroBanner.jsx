@@ -24,11 +24,11 @@ function HeroBanner() {
         navigate(`/search/${query}`)    
     }
   }
-  // const handleSearch = () => {
-  //   if(query.length > 0){
-  //     navigate(`/search/${query}`)
-  //   }
-  // }
+  const handleSearch = () => {
+    if(query.length > 0){
+      navigate(`/search/${query}`)
+    }
+  }
 
   return (
     <div className='w-full h-[450px] bg-black flex items-center relative md:h-[700px]'>
@@ -57,7 +57,8 @@ function HeroBanner() {
             onChange={(e) => setQuery(e.target.value)}
             
               />
-            <button className=' w-[100px] h-12 bg-gradient text-white outline-none rounded-r-[30px] text-base cursor-pointer md:w-[150px] md:h-14 md:text-lg' >Search</button>
+            <button className=' w-[100px] h-12 bg-gradient text-white outline-none rounded-r-[30px] text-base cursor-pointer md:w-[150px] md:h-14 md:text-lg'
+            onClick={handleSearch} >Search</button>
           </div>
         </div>
       

@@ -7,10 +7,9 @@
 }
 body{
     background-color: #04152d;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
 }
 
-
-/* hero banner css */
 .lazy-load-image-background{
     width: 100%;
     height: 100%;
