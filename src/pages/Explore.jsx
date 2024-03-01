@@ -125,7 +125,7 @@ function Explore() {
           </div>
         </div>
         {/* {loading && <Spinner initial={true} />} */}
-        {loading && <p>Loading...</p>}
+        {loading && <p className="text-white text-center mt-10">Loading...</p>}
         {!loading && (
           <>
             {data?.results?.length > 0 ? (

@@ -47,6 +47,10 @@ const Footer = () => {
             );
           })}
         </div>
+        <p className="mt-5 text-xs opacity-70">
+          Made with <span className="text-red-600 opacity-100">❤️</span> by
+          <a className=" mx-1 font-bold text-sm hover:underline text-pink" href="https://github.com/amanDhiran/Moviez"> Aman Dhiran</a>
+        </p>
       </ContentWrapper>
     </footer>
   );
