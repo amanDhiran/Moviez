@@ -13,7 +13,7 @@ function SwitchTabs({data, onTabChange}) {
     }
 
   return (
-    <div className='h-[34px] bg-white rounded-[20px] p-[2px]'>
+    <div className='h-[34px] bg-white rounded-xl p-[2px]'>
         <div className='flex items-center h-[30px] relative'>
             {data.map((tab,index) => (
                 <span 
@@ -24,7 +24,7 @@ function SwitchTabs({data, onTabChange}) {
                     {tab}
                 </span>
             ))}
-            <span className="h-[30px] w-[100px] rounded-[15px] bg-gradient absolute left-0 transition-[left] ease-[cubic-bezier(0.88,-0.35,0.565,1.35)] duration-[0.4s]" style={{left}} />
+            <span className="h-[30px] w-[100px] rounded-xl bg-gradient absolute left-0 transition-[left] ease-[cubic-bezier(0.88,-0.35,0.565,1.35)] duration-[0.4s]" style={{left}} />
         </div>
     </div>
   )
