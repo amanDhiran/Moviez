@@ -11,6 +11,7 @@ export default {
         "black-light": "#173d77",
         pink: "#da2f68",
         orange: "#f89e00",
+        gradient: "#020c1b"
         
       },
       width: {
@@ -19,9 +20,9 @@ export default {
         "carousel-item-md": 'calc(25% - 15px)',
         "carousel-item-lg": 'calc(20% - 16px)'
       },
-      backgroundImage: {
-        gradient: "linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 100%, rgba(252,176,69,1) 100%)",
-      },
+      // backgroundImage: {
+      //   gradient: "linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 100%, rgba(252,176,69,1) 100%)",
+      // },
       keyframes: {
         mobileMenu: {
           '0%': { transform: 'translateY(-130%)' },

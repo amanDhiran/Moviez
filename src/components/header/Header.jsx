@@ -3,7 +3,7 @@ import { HiOutlineSearch } from "react-icons/hi";
 import { VscChromeClose } from "react-icons/vsc";
 import { SlMenu } from "react-icons/sl";
 import ContentWrapper from "../contentWrappper/ContentWrapper";
-//import logo
+import { BiSolidMoviePlay } from "react-icons/bi";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function Header() {
@@ -81,8 +81,8 @@ function Header() {
     >
       <ContentWrapper className="flex items-center justify-between">
         <div className=" cursor-pointer z-[2]" onClick={() => navigate("/")}>
-          {/*logo */}
-          <h2 className="items-center flex h-[50px] text-white ">LOGO</h2>
+          <h2 className="items-center flex h-[50px]  text-2xl gap-2 text-white font-extrabold"><span className=" text-4xl "><BiSolidMoviePlay /></span>Moviez 
+</h2>
         </div>
         <ul
           className={` md:flex ${

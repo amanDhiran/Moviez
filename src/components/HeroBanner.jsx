@@ -50,14 +50,14 @@ function HeroBanner() {
           </span>
           <div className='flex items-center w-full'>
             <input 
-            className=' w-input-width-small-screen h-12 outline-none text-black rounded-l-[30px] px-4 text-sm md:w-input-width-large-screen md:h-14 md:text-xl md:px-7'
+            className=' w-input-width-small-screen h-12 outline-none text-black rounded-l-xl px-4 text-sm md:w-input-width-large-screen md:h-14 md:text-xl md:px-7'
             type="text"
             placeholder='Search for a movie or tv show...'
             onKeyUp={searchQueryHandler}
             onChange={(e) => setQuery(e.target.value)}
             
               />
-            <button className=' w-[100px] h-12 bg-gradient text-white outline-none rounded-r-[30px] text-base cursor-pointer md:w-[150px] md:h-14 md:text-lg'
+            <button className=' w-[100px] h-12 bg-gradient text-white outline-none rounded-r-lg text-base cursor-pointer md:w-[150px] md:h-14 md:text-lg'
             onClick={handleSearch} >Search</button>
           </div>
         </div>
