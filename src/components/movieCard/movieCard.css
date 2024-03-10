@@ -8,5 +8,5 @@
     overflow: hidden;
 }
 .movieCard:hover .posterBlock{
-    opacity: 0.5;
+    opacity: 0.9;
 }
