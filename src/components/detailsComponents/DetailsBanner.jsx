@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import ContentWrapper from "../contentWrappper/ContentWrapper";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Img from "../lazyLoadImage/Img";
 import PosterFallback from "../../assets/no-poster.png";
 import dayjs from "dayjs";
@@ -10,15 +10,21 @@ import Genres from "../Genres";
 import CircleRating from "../circularRating/CircleRating";
 import { PiPlayCircleThin } from "react-icons/pi";
 import VideoPopup from "../VideoPopup";
+import { addToWatchList } from "../../store/watchListSlice";
+import { removeFromWatchList } from "../../store/watchListSlice";
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 
 function DetailsBanner({ video, crew }) {
   
   const [show, setShow] = useState(false);
-    const [videoId, setVideoId] = useState(null);
+  const [videoId, setVideoId] = useState(null);
 
   const { mediaType, id } = useParams();
   const { data, loading } = useFetch(`/${mediaType}/${id}`);
   const { url } = useSelector((state) => state.home);
+  const {watchListMovies} = useSelector((state) => state.watchList)
+  const dispatch = useDispatch()
 
   const _genres = data?.genres?.map((g) => g.id);
 
@@ -86,7 +92,7 @@ function DetailsBanner({ video, crew }) {
                         className={
                           "max-w-[70px] bg-black2 rounded-[50%] md:max-w-[90px]"
                         }
-                        rating={data?.vote_average.toFixed(1)}
+                        rating={data?.vote_average?.toFixed(1)}
                       />
                       <div
                         className="flex items-center gap-[10px] cursor-pointer hover:text-pink transition-colors ease-in-out duration-[0.7s]"
@@ -98,6 +104,23 @@ function DetailsBanner({ video, crew }) {
                         <PiPlayCircleThin className="rounded-full md:text-[100px] text-[80px]" />
                         <span className="text-[20px] ">Watch Trailer</span>
                       </div>
+                      {watchListMovies.some((movie) => movie.id === data.id) ? (
+                        <AiFillHeart
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            dispatch(removeFromWatchList(data));
+                          }}
+                          className="text-red-600 absolute top-3 right-28 text-xl md:text-4xl"
+                        />
+                      ) : (
+                        <AiOutlineHeart
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            dispatch(addToWatchList(data));
+                          }}
+                          className="text-white absolute hover:text-red-500 top-3 right-28 text-xl md:text-4xl"
+                        />
+                      )}
                     </div>
 
                     <div className="mb-[25px]">

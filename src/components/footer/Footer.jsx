@@ -35,8 +35,6 @@ const Footer = () => {
         </div>
         <div className="flex items-center justify-center gap-[10px]">
           {[
-            <FaFacebookF />,
-            <FaInstagram />,
             <FaTwitter />,
             <FaLinkedin />,
           ].map((item, i) => {
