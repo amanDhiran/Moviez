@@ -81,8 +81,12 @@ function Header() {
     >
       <ContentWrapper className="flex items-center justify-between">
         <div className=" cursor-pointer z-[2]" onClick={() => navigate("/")}>
-          <h2 className="items-center flex h-[50px]  text-2xl gap-2 text-white font-extrabold"><span className=" text-4xl "><BiSolidMoviePlay /></span>Moviez 
-</h2>
+          <h2 className="items-center flex h-[50px]  text-2xl gap-2 text-white font-extrabold">
+            <span className=" text-4xl ">
+              <BiSolidMoviePlay />
+            </span>
+            Moviez
+          </h2>
         </div>
         <ul
           className={` md:flex ${
