@@ -11,6 +11,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Explore from "./pages/Explore";
 import Details from "./pages/Details";
 import SearchResult from "./pages/SearchResult"
+import WatchList from "./pages/WatchList";
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
         <Route path="/:mediaType/:id" element={<Details />} />
         <Route path="/search/:query" element={<SearchResult />} />
         <Route path="/explore/:mediaType" element={<Explore />} />
+        <Route path="/watchList" element= {<WatchList />}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     <Footer/>

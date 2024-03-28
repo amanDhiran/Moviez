@@ -7,8 +7,10 @@ import './movieCard.css'
 import Img from "../lazyLoadImage/Img";
 import dayjs from "dayjs";
 import PosterFallback from "../../assets/no-poster.png"
-import { FaHeart } from "react-icons/fa";
 import { addToWatchList } from "../../store/watchListSlice";
+import { removeFromWatchList } from "../../store/watchListSlice";
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 
 
 function MovieCard({ data, fromSearch, mediaType }) {
@@ -16,8 +18,7 @@ function MovieCard({ data, fromSearch, mediaType }) {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {watchListMovies} = useSelector((state) => state.watchList)
-    let watchListedMovies = watchListMovies.find((movie) => movie.id === data.id)
-              const watchListDisabled = watchListedMovies ? true : false
+
     const posterUrl = data.poster_path
         ? url.poster + data.poster_path
         : PosterFallback;
@@ -46,18 +47,26 @@ function MovieCard({ data, fromSearch, mediaType }) {
               className={
                 " m-2 hidden relative md:flex md:flex-wrap md:justify-end"
               }
-              data={data.genre_ids.slice(0, 2)}
+              data={data?.genre_ids?.slice(0, 2)}
             />
-            <button
-              disabled={watchListDisabled}
-              onClick={(e) => {
-                dispatch(addToWatchList(data));
-                e.stopPropagation();
-              }}
-              className=" disabled:text-red-500 absolute top-3 right-3 rounded-lg text-white text-xl hover:text-red-500 transition-colors ease-in-out duration-300 "
-            >
-              <FaHeart />
-            </button>
+            {watchListMovies.some((movie) => movie.id === data.id) ? (
+                        <AiFillHeart
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            dispatch(removeFromWatchList(data));
+                          }}
+                          size={24}
+                          className="text-red-600 absolute top-3 right-3 text-xl md:text-2xl"
+                        />
+                      ) : (
+                        <AiOutlineHeart
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            dispatch(addToWatchList(data));
+                          }}
+                          className="text-white absolute hover:text-red-500 top-3 right-3 text-xl md:text-2xl"
+                        />
+                      )}
           </>
         )}
       </div>

@@ -112,6 +112,16 @@ function Header() {
             TV Shows
           </li>
           <li
+            onClick={() => navigate("/watchList")}
+            className={`h-[60px] flex md:items-center md:mx-[15px] text-white font-medium relative hover:text-pink cursor-pointer ${
+              mobileMenu
+                ? "text-xl w-full h-auto py-[15px] px-[20px] m-0 flex flex-col items-start"
+                : ""
+            }`}
+          >
+            Watch List
+          </li>
+          <li
             className={`h-[60px] flex items-center mx-[15px] text-white font-medium relative hover:text-pink cursor-pointer text-lg ${
               mobileMenu ? "hidden" : ""
             }`}
