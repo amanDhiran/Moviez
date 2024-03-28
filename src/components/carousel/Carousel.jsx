@@ -120,7 +120,7 @@ function Carousel({ data, loading, endpoint, title }) {
                             e.stopPropagation();
                             dispatch(addToWatchList(item));
                           }}
-                          className="text-white absolute hover:text-red-500 top-3 right-3 text-xl md:text-2xl"
+                          className="text-white absolute hover:text-red-500 transition-all ease-in-out duration-300 top-3 right-3 text-xl md:text-2xl"
                         />
                       )}
                   </div>
