@@ -23,7 +23,7 @@ function WatchList() {
               >
                 {watchListMovies?.map((item, index) => {
                   return (
-                    <MovieCard key={index} data={item} mediaType={mediaType} />
+                    <MovieCard key={index} data={item} mediaType={mediaType} fromWatchList = {true} />
                   );
                 })}
               </div>

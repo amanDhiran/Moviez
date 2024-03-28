@@ -13,7 +13,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 
 
-function MovieCard({ data, fromSearch, mediaType }) {
+function MovieCard({ data, fromSearch, mediaType, fromWatchList }) {
     const { url } = useSelector((state) => state.home);
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -26,8 +26,8 @@ function MovieCard({ data, fromSearch, mediaType }) {
         
   return (
     <div
-      className="w-[calc(50%-5px)] mb-[25px] cursor-pointer flex-shrink-0 md:w-[calc(25%-15px)] lg:w-[calc(20%-16px)] movieCard"
-      onClick={() => navigate(`/${data.media_type || mediaType}/${data.id}`)}
+      className={`w-[calc(50%-5px)] mb-[25px] ${fromWatchList ? "" : "cursor-pointer" } flex-shrink-0 md:w-[calc(25%-15px)] lg:w-[calc(20%-16px)] movieCard`}
+      onClick={() => !fromWatchList && navigate(`/${data.media_type || mediaType}/${data.id}`)}
     >
       <div className="posterBlock relative w-full aspect-[1/1.5] bg-cover bg-center mb-[30px] flex items-end justify-between p-[10px] transition-all ease-out duration-[0.5s]">
         <Img
@@ -56,7 +56,7 @@ function MovieCard({ data, fromSearch, mediaType }) {
                             dispatch(removeFromWatchList(data));
                           }}
                           size={24}
-                          className="text-red-600 absolute top-3 right-3 text-xl md:text-2xl"
+                          className="text-red-600 absolute top-3 right-3 text-xl cursor-pointer md:text-2xl"
                         />
                       ) : (
                         <AiOutlineHeart
@@ -64,7 +64,7 @@ function MovieCard({ data, fromSearch, mediaType }) {
                             e.stopPropagation();
                             dispatch(addToWatchList(data));
                           }}
-                          className="text-white absolute hover:text-red-500 top-3 right-3 text-xl md:text-2xl"
+                          className="text-white absolute hover:text-red-500 cursor-pointer top-3 right-3 text-xl md:text-2xl"
                         />
                       )}
           </>
