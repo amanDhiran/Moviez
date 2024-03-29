@@ -54,7 +54,7 @@ function DetailsBanner({ video, crew }) {
               <div className="opacity-layer w-full h-[250px]  absolute bottom-0 left-0"></div>
               <ContentWrapper>
                 <div className="flex relative flex-col gap-[25px] md:gap-[50px] md:flex-row">
-                  <div className=" flex-shrink-0">
+                  <div className="relative flex-shrink-0">
                     {data.poster_path ? (
                       <Img
                         className={
@@ -70,6 +70,24 @@ function DetailsBanner({ video, crew }) {
                         src={PosterFallback}
                       />
                     )}
+                    {watchListMovies.some((movie) => movie.id === data.id) ? (
+                        <AiFillHeart
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            dispatch(removeFromWatchList(data));
+                          }}
+                          size={24}
+                          className="text-red-600 absolute top-3 right-3 text-xl cursor-pointer md:text-2xl"
+                        />
+                      ) : (
+                        <AiOutlineHeart
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            dispatch(addToWatchList(data));
+                          }}
+                          className="text-white absolute hover:text-red-500 cursor-pointer top-3 right-3 text-xl md:text-2xl"
+                        />
+                      )}
                   </div>
                   <div className="text-white">
                     <div className="text-[28px] leading-[40px] md:text-[34px] md:leading-[44px]">
@@ -104,23 +122,6 @@ function DetailsBanner({ video, crew }) {
                         <PiPlayCircleThin className="rounded-full md:text-[100px] text-[80px]" />
                         <span className="text-[20px] ">Watch Trailer</span>
                       </div>
-                      {watchListMovies.some((movie) => movie.id === data.id) ? (
-                        <AiFillHeart
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            dispatch(removeFromWatchList(data));
-                          }}
-                          className="text-red-600 absolute top-3 right-28 text-xl md:text-4xl"
-                        />
-                      ) : (
-                        <AiOutlineHeart
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            dispatch(addToWatchList(data));
-                          }}
-                          className="text-white absolute hover:text-red-500 top-3 right-28 text-xl md:text-4xl"
-                        />
-                      )}
                     </div>
 
                     <div className="mb-[25px]">

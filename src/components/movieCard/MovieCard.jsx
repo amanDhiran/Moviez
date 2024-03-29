@@ -1,7 +1,7 @@
 import React from "react";
 import CircleRating from "../circularRating/CircleRating"
 import Genres from "../Genres";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import './movieCard.css'
 import Img from "../lazyLoadImage/Img";
