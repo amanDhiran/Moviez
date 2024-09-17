@@ -90,19 +90,19 @@ function Carousel({ data, loading, endpoint, title }) {
                       className={"w-full h-full object-cover object-center"}
                       src={posterUrl}
                     />
-                    <CircleRating
+                    {item.vote_average && <CircleRating
                       textColor={"#04152d"}
                       className={
                         " rounded-[50%] p-[2px] w-[40px] h-[40px] relative top-[20px] left-[12px] bg-white flex-shrink-0 md:w-[50px] md:h-[50px]"
                       }
                       rating={item?.vote_average.toFixed(1)}
-                    />
-                    <Genres
+                    />}
+                   {item.vote_average && <Genres
                       className={
                         " m-2 hidden relative md:flex md:flex-wrap md:justify-end"
                       }
                       data={item.genre_ids.slice(0, 2)}
-                    />
+                    />}
 
                 
                       {watchListMovies.some((movie) => movie.id === item.id) ? (
